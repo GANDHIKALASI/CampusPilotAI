@@ -1,0 +1,325 @@
+{
+  "evaluation_name": "CampusPilot AI Phase 3.5.5 RAG Evaluation",
+  "dataset": {
+    "total_chunks": 30,
+    "subjects": [
+      "Computer Networks",
+      "Computer Organization",
+      "DBMS",
+      "Data Structures",
+      "Operating Systems"
+    ],
+    "shared_chunks": 20,
+    "personal_chunks": 10,
+    "total_questions": 20,
+    "categories": {
+      "exact_terminology": 3,
+      "paraphrased": 3,
+      "conceptual": 3,
+      "related_context": 3,
+      "ambiguous": 2,
+      "unanswerable_negative": 3,
+      "technical_abbreviation": 3
+    }
+  },
+  "retrieval_calibration": {
+    "0.4": {
+      "precision_at_5": 0.1647,
+      "recall_at_5": 0.7647,
+      "mrr": 0.7549,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 0.0,
+      "avg_result_count": 5.0
+    },
+    "0.45": {
+      "precision_at_5": 0.1647,
+      "recall_at_5": 0.7647,
+      "mrr": 0.7549,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 0.0,
+      "avg_result_count": 5.0
+    },
+    "0.5": {
+      "precision_at_5": 0.1647,
+      "recall_at_5": 0.7647,
+      "mrr": 0.7549,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 0.0,
+      "avg_result_count": 5.0
+    },
+    "0.55": {
+      "precision_at_5": 0.1647,
+      "recall_at_5": 0.7647,
+      "mrr": 0.7157,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 0.0,
+      "avg_result_count": 5.0
+    },
+    "0.6": {
+      "precision_at_5": 0.1647,
+      "recall_at_5": 0.7647,
+      "mrr": 0.701,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 100.0,
+      "avg_result_count": 4.25
+    },
+    "0.65": {
+      "precision_at_5": 0.199,
+      "recall_at_5": 0.7647,
+      "mrr": 0.3971,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 100.0,
+      "avg_result_count": 3.8
+    },
+    "0.7": {
+      "precision_at_5": 0.249,
+      "recall_at_5": 0.7647,
+      "mrr": 0.2696,
+      "hit_rate_at_5": 0.8235,
+      "negative_rejection_pct": 100.0,
+      "avg_result_count": 2.55
+    }
+  },
+  "calibrated_optimal_threshold": 0.6,
+  "category_metrics_at_0_60": [
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q01_exact_acid",
+      "category": "exact_terminology",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q02_exact_coffman",
+      "category": "exact_terminology",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q03_exact_dijkstra",
+      "category": "exact_terminology",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 0.5,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q04_para_context_switch",
+      "category": "paraphrased",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q05_para_bplus_tree",
+      "category": "paraphrased",
+      "result_count": 5
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "reciprocal_rank": 0.0,
+      "hit": 0.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q06_para_virtual_memory",
+      "category": "paraphrased",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q07_concept_normalization",
+      "category": "conceptual",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q08_concept_tcp_reliability",
+      "category": "conceptual",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q09_concept_pipelining",
+      "category": "conceptual",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q10_related_dns_ip",
+      "category": "related_context",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 0.3333333333333333,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q11_related_sorting_bounds",
+      "category": "related_context",
+      "result_count": 5
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "reciprocal_rank": 0.0,
+      "hit": 0.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q12_related_dma_io",
+      "category": "related_context",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 0.25,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q13_ambig_pipeline",
+      "category": "ambiguous",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 0.5,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q14_ambig_consistency",
+      "category": "ambiguous",
+      "result_count": 5
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "reciprocal_rank": 0.0,
+      "hit": 1.0,
+      "is_negative": 1.0,
+      "correct_rejection": 1.0,
+      "question_id": "q15_neg_crispr",
+      "category": "unanswerable_negative",
+      "result_count": 0
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "reciprocal_rank": 0.0,
+      "hit": 1.0,
+      "is_negative": 1.0,
+      "correct_rejection": 1.0,
+      "question_id": "q16_neg_plate_tectonics",
+      "category": "unanswerable_negative",
+      "result_count": 0
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "reciprocal_rank": 0.0,
+      "hit": 1.0,
+      "is_negative": 1.0,
+      "correct_rejection": 1.0,
+      "question_id": "q17_neg_organic_chemistry",
+      "category": "unanswerable_negative",
+      "result_count": 0
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q18_abbrev_tlb",
+      "category": "technical_abbreviation",
+      "result_count": 5
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "reciprocal_rank": 0.0,
+      "hit": 0.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q19_abbrev_cidr",
+      "category": "technical_abbreviation",
+      "result_count": 5
+    },
+    {
+      "precision": 0.2,
+      "recall": 1.0,
+      "reciprocal_rank": 1.0,
+      "hit": 1.0,
+      "is_negative": 0.0,
+      "correct_rejection": 0.0,
+      "question_id": "q20_abbrev_rbt_avl",
+      "category": "technical_abbreviation",
+      "result_count": 5
+    }
+  ],
+  "security_verification": {
+    "personal_doc_isolation": "PASS",
+    "shared_doc_accessibility": "PASS",
+    "unauthorized_doc_id_rejected": "PASS",
+    "jwt_identity_tamper_resistant": "PASS"
+  },
+  "credit_safety": {
+    "atomic_persistence": "PASS (Single ACID transaction)",
+    "zero_deduction_on_failure": "PASS",
+    "idempotent_duplicate_protection": "PASS",
+    "fenced_heartbeat_lease": "PASS"
+  },
+  "performance_profile": {
+    "embedding_latency_ms": 609.22,
+    "semantic_search_latency_ms": 533.08,
+    "gemini_generation_latency_ms": 850.0,
+    "e2e_latency_ms": 1992.3,
+    "estimated_cost_per_turn_usd": 0.00012313
+  }
+}
