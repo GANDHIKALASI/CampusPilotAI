@@ -1,6 +1,7 @@
 import os
 from functools import lru_cache
-from typing import List, Optional
+from typing import List, Optional, Union
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -26,7 +27,7 @@ class Settings(BaseSettings):
     visitor_chat_limit: int = 3
 
     # Administrative identities for shared academic document library
-    admin_emails: List[str] = [
+    admin_emails: Union[List[str], str] = [
         "buggandhi@proton.me",
         "admin@campuspilot.ai",
         "administrator@campuspilot.ai",
@@ -76,15 +77,35 @@ class Settings(BaseSettings):
     search_default_threshold: float = 0.60
 
     # CORS origins
-    cors_origins: List[str] = [
+    cors_origins: Union[List[str], str] = [
+        "https://campuspilotai.vercel.app",
         "http://localhost:3000",
         "http://localhost:5173",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
     ]
 
+    # Trusted hosts for production reverse proxy (do not use wildcard in production)
+    allowed_hosts: Union[List[str], str] = []
+
     # CampusPilot System Persona / Context
     system_instruction: str = CAMPUSPILOT_SYSTEM_PROMPT
+
+    @field_validator("cors_origins", "admin_emails", "allowed_hosts", mode="after")
+    @classmethod
+    def assemble_string_or_list(cls, v: Union[str, List[str]]) -> List[str]:
+        if isinstance(v, str):
+            v_str = v.strip()
+            if v_str.startswith("[") and v_str.endswith("]"):
+                import json
+                try:
+                    return json.loads(v_str)
+                except Exception:
+                    pass
+            return [item.strip() for item in v_str.split(",") if item.strip()]
+        elif isinstance(v, list):
+            return v
+        return []
 
     model_config = SettingsConfigDict(
         env_file=(

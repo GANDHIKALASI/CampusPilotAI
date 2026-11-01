@@ -35,6 +35,11 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    # Trusted Host configuration (enabled when allowed_hosts is restricted)
+    if settings.allowed_hosts and "*" not in settings.allowed_hosts:
+        from fastapi.middleware.trustedhost import TrustedHostMiddleware
+        app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_hosts)
+
     # CORS configuration
     app.add_middleware(
         CORSMiddleware,
@@ -53,7 +58,17 @@ def create_app() -> FastAPI:
             "message": f"Welcome to {settings.app_name} API",
             "version": settings.app_version,
             "docs_url": "/docs",
-            "health_url": "/api/chat/health",
+            "health_url": "/health",
+        }
+
+    @app.get("/health", tags=["Root"])
+    @app.get("/api/health", tags=["Root"])
+    async def health_check():
+        return {
+            "status": "healthy",
+            "app_name": settings.app_name,
+            "version": settings.app_version,
+            "env": settings.app_env,
         }
 
     return app

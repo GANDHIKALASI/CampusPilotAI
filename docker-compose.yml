@@ -1,0 +1,90 @@
+# =============================================================================
+# CampusPilot AI — Production Docker Compose Configuration (AWS EC2 Backend)
+# Services: FastAPI Backend + Nginx Reverse Proxy
+# (Next.js Frontend is deployed separately on Vercel)
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # 1. FastAPI AI & Document Processing Backend
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: campuspilot-backend:latest
+    container_name: campuspilot-backend
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+      - path: backend/.env
+        required: false
+    expose:
+      - "8000"
+    networks:
+      - campuspilot-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 256M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ---------------------------------------------------------------------------
+  # 2. Nginx Reverse Proxy (SSL, Routing, SSE Streaming, Rate Limiting)
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    container_name: campuspilot-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - certbot-www:/var/www/html
+    networks:
+      - campuspilot-network
+    depends_on:
+      backend:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 32M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# -----------------------------------------------------------------------------
+# Storage Volumes & Bridge Network
+# -----------------------------------------------------------------------------
+volumes:
+  certbot-etc:
+    driver: local
+  certbot-var:
+    driver: local
+  certbot-www:
+    driver: local
+
+networks:
+  campuspilot-network:
+    driver: bridge

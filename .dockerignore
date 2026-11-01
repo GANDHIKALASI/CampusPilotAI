@@ -1,0 +1,42 @@
+# Version Control
+.git
+.gitignore
+
+# Environment & Secret Credentials (NEVER bake into image)
+.env
+.env.*
+.env.local
+.env.production
+!.env.example
+
+# Python cache & virtual environments
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+dist/
+build/
+.turbo/
+npm-debug.log*
+
+# Test suites & evaluation benchmarks
+tests/
+test_*.py
+retrieval_evaluation_results.json
+rag_e2e_evaluation_report.json
+
+# Local runtime & system files
+*.log
+*.db
+*.sqlite*
+.DS_Store
+.idea/
+.vscode/
+docs/

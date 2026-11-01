@@ -1,0 +1,30 @@
+# Version control & local environment
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+
+# Python virtual environment & cache
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Test databases & evaluation outputs
+tests/
+test_*.py
+*.db
+*.sqlite*
+*.log
+retrieval_evaluation_results.json
+rag_e2e_evaluation_report.json
+
+# IDE & OS
+.DS_Store
+.idea/
+.vscode/
